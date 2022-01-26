@@ -13,7 +13,7 @@ class HelpFormatter extends RawDescriptionHelpFormatter {
   }
 }
 const description = `
-Template Processor 2.0
+Template Processor 1.0
 
 Process templates to generate files. Replace any pattern from Template File with values from a Data File to create hydarated files.
 
@@ -33,8 +33,8 @@ If filepath is provided, the pattern is read from the file.
 
 OUTPUT_DIR is the directory where hydrated files would be generated. Defaults to 'output' sub directory created automatically within the present working directory.
 
-OUT_FILENAME_PATTERN is the pattern to name to hydrated files with. This can use the variables from TEMPLATE_VARS by prefixing them with '@'. For example '@serial.glabels' as
-OUT_FILENAME_PATTERN would create '.glabels' file with name taken from DATA_FILE corresponding to column asociated with variable name 'serial'.
+OUT_FILENAME_PATTERN is the pattern to name to hydrated files with. This can use the variables from TEMPLATE_VARS by prefixing them with '@'. For example '@serial.txt' as
+OUT_FILENAME_PATTERN would create '.txt' file with name taken from DATA_FILE corresponding to column asociated with variable name 'serial'.
 
 If filepath is provided, the pattern is read from the file.
 
@@ -61,7 +61,7 @@ data.csv
 
 
 Running command:
-template-processor -s .\\sample.txt -d .\\data.csv -v name,relation -p @name.txt -o .\\letters -i
+template-processor -s ./sample.txt -d ./data.csv -v name,relation -p @name.txt -o ./letters -i
 
 would generate two letter files 'Ajay.txt' and 'Seema.txt' in directory 'letters'
 `;
@@ -70,7 +70,7 @@ const parser = new ArgumentParser({
   prog: "template-processor",
   formatter_class: HelpFormatter,
   description,
-  usage: `template-processor -s data/sample.glabels -d data/sample.csv -v serial,code,mrp -p @serial-@code.glabels -m '{";" : ","}' -o outputTemplates -r '@variable' -i`,
+  usage: `template-processor -s data/sample.txt -d data/sample.csv -v serial,code,mrp -p @serial-@code.txt -m '{";" : ","}' -o outputTemplates -r '@variable' -i`,
 });
 
 parser.add_argument("-s", "--sample-template", {
@@ -100,7 +100,7 @@ parser.add_argument("-m", "--field-modifier", {
 });
 parser.add_argument("-o", "--output-directory", {
   dest: "OUTPUT_DIR",
-  help: "Directory where files should be created. Default '.\\output'",
+  help: "Directory where files should be created. Default './output'",
   default: "output",
 });
 parser.add_argument("-r", "--replace-pattern", {
