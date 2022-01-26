@@ -1,0 +1,16 @@
+{
+  "name": "template-creator",
+  "version": "1.0.0",
+  "description": "Create hydrated templates from sample template files",
+  "main": "index.js",
+  "keywords": [],
+  "author": {
+    "name": "Rituraj Borpujari",
+    "url": "https://in/linkedin.com/in/riturajborpujari"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "csv-parse": "^5.0.4"
+  }
+}
